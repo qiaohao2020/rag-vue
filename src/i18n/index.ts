@@ -1,0 +1,257 @@
+import { createI18n } from 'vue-i18n'
+
+// 中文语言包
+const zh = {
+  common: {
+    search: '搜索',
+    edit: '编辑',
+    delete: '删除',
+    add: '添加',
+    import: '导入',
+    export: '导出',
+    save: '保存',
+    cancel: '取消',
+    confirm: '确认',
+    reset: '重置',
+    view: '查看',
+    submit: '提交',
+    clear: '清空'
+  },
+  menu: {
+    home: '首页',
+    qa: '问答',
+    knowledge: '知识库',
+    search: '内容检索',
+    help: '帮助',
+    settings: '设置'
+  },
+  knowledge: {
+    title: '知识库管理',
+    importKnowledge: '导入知识库',
+    addDocument: '添加文档',
+    updateTime: '更新时间',
+    description: '描述'
+  },
+  search: {
+    title: '内容检索',
+    placeholder: '请输入关键词搜索...',
+    searchType: '搜索类型',
+    timeRange: '时间范围',
+    all: '全部',
+    title: '标题',
+    content: '内容',
+    tags: '标签',
+    allTime: '全部时间',
+    lastWeek: '最近一周',
+    lastMonth: '最近一月',
+    lastQuarter: '最近三月',
+    viewDetail: '查看详情',
+    addToKnowledge: '添加到知识库',
+    noResults: '未找到相关内容'
+  },
+  qa: {
+    title: '问答页面',
+    questionPlaceholder: '请输入您的问题...',
+    submitQuestion: '提交问题',
+    history: '历史记录',
+    clearHistory: '清空历史',
+    answer: '回答'
+  },
+  settings: {
+    title: '系统设置',
+    basicSettings: '基本设置',
+    advancedSettings: '高级设置',
+    theme: '主题模式',
+    language: '界面语言',
+    fontSize: '字体大小',
+    history: '历史记录',
+    autoSave: '自动保存',
+    darkMode: '深色',
+    lightMode: '浅色',
+    save: '保存',
+    notSave: '不保存',
+    enable: '开启',
+    disable: '关闭',
+    apiSettings: 'API设置',
+    apiUrl: 'API地址',
+    timeout: '请求超时',
+    cacheSize: '缓存大小',
+    milliseconds: '毫秒',
+    mb: 'MB'
+  }
+}
+
+// 英文语言包
+const en = {
+  common: {
+    search: 'Search',
+    edit: 'Edit',
+    delete: 'Delete',
+    add: 'Add',
+    import: 'Import',
+    export: 'Export',
+    save: 'Save',
+    cancel: 'Cancel',
+    confirm: 'Confirm',
+    reset: 'Reset',
+    view: 'View',
+    submit: 'Submit',
+    clear: 'Clear'
+  },
+  menu: {
+    home: 'Home',
+    qa: 'QA',
+    knowledge: 'Knowledge',
+    search: 'Search',
+    help: 'Help',
+    settings: 'Settings'
+  },
+  knowledge: {
+    title: 'Knowledge Management',
+    importKnowledge: 'Import Knowledge',
+    addDocument: 'Add Document',
+    updateTime: 'Update Time',
+    description: 'Description'
+  },
+  search: {
+    title: 'Content Search',
+    placeholder: 'Please enter keywords...',
+    searchType: 'Search Type',
+    timeRange: 'Time Range',
+    all: 'All',
+    title: 'Title',
+    content: 'Content',
+    tags: 'Tags',
+    allTime: 'All Time',
+    lastWeek: 'Last Week',
+    lastMonth: 'Last Month',
+    lastQuarter: 'Last Quarter',
+    viewDetail: 'View Detail',
+    addToKnowledge: 'Add to Knowledge',
+    noResults: 'No results found'
+  },
+  qa: {
+    title: 'QA Page',
+    questionPlaceholder: 'Please enter your question...',
+    submitQuestion: 'Submit Question',
+    history: 'History',
+    clearHistory: 'Clear History',
+    answer: 'Answer'
+  },
+  settings: {
+    title: 'System Settings',
+    basicSettings: 'Basic Settings',
+    advancedSettings: 'Advanced Settings',
+    theme: 'Theme Mode',
+    language: 'Language',
+    fontSize: 'Font Size',
+    history: 'History',
+    autoSave: 'Auto Save',
+    darkMode: 'Dark',
+    lightMode: 'Light',
+    save: 'Save',
+    notSave: 'Not Save',
+    enable: 'Enable',
+    disable: 'Disable',
+    apiSettings: 'API Settings',
+    apiUrl: 'API URL',
+    timeout: 'Timeout',
+    cacheSize: 'Cache Size',
+    milliseconds: 'ms',
+    mb: 'MB'
+  }
+}
+
+// 韩文语言包
+const ko = {
+  common: {
+    search: '검색',
+    edit: '편집',
+    delete: '삭제',
+    add: '추가',
+    import: '가져오기',
+    export: '내보내기',
+    save: '저장',
+    cancel: '취소',
+    confirm: '확인',
+    reset: '초기화',
+    view: '보기',
+    submit: '제출',
+    clear: '지우기'
+  },
+  menu: {
+    home: '홈',
+    qa: '질문답변',
+    knowledge: '지식베이스',
+    search: '검색',
+    help: '도움말',
+    settings: '설정'
+  },
+  knowledge: {
+    title: '지식베이스 관리',
+    importKnowledge: '지식베이스 가져오기',
+    addDocument: '문서 추가',
+    updateTime: '업데이트 시간',
+    description: '설명'
+  },
+  search: {
+    title: '콘텐츠 검색',
+    placeholder: '검색어를 입력하세요...',
+    searchType: '검색 유형',
+    timeRange: '시간 범위',
+    all: '전체',
+    title: '제목',
+    content: '내용',
+    tags: '태그',
+    allTime: '전체 시간',
+    lastWeek: '최근 일주일',
+    lastMonth: '최근 한 달',
+    lastQuarter: '최근 3개월',
+    viewDetail: '상세 보기',
+    addToKnowledge: '지식베이스에 추가',
+    noResults: '검색 결과가 없습니다'
+  },
+  qa: {
+    title: '질문답변 페이지',
+    questionPlaceholder: '질문을 입력하세요...',
+    submitQuestion: '질문 제출',
+    history: '기록',
+    clearHistory: '기록 지우기',
+    answer: '답변'
+  },
+  settings: {
+    title: '시스템 설정',
+    basicSettings: '기본 설정',
+    advancedSettings: '고급 설정',
+    theme: '테마 모드',
+    language: '언어',
+    fontSize: '글꼴 크기',
+    history: '기록',
+    autoSave: '자동 저장',
+    darkMode: '다크',
+    lightMode: '라이트',
+    save: '저장',
+    notSave: '저장 안 함',
+    enable: '활성화',
+    disable: '비활성화',
+    apiSettings: 'API 설정',
+    apiUrl: 'API 주소',
+    timeout: '시간 초과',
+    cacheSize: '캐시 크기',
+    milliseconds: '밀리초',
+    mb: 'MB'
+  }
+}
+
+const i18n = createI18n({
+  legacy: false,
+  locale: localStorage.getItem('language') || 'zh',
+  fallbackLocale: 'zh',
+  messages: {
+    zh,
+    en,
+    ko
+  }
+})
+
+export default i18n 
