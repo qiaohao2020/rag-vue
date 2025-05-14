@@ -82,6 +82,7 @@ const zh = {
   },
   issue: {
     title: '问题分析',
+    issueInfo: '问题信息',
     historyData: '历史数据',
     issueNumber: '问题编号',
     title: '标题',
@@ -189,6 +190,7 @@ const en = {
   },
   issue: {
     title: 'Issue Analysis',
+    issueInfo: 'Issue Information',
     historyData: 'History Data',
     issueNumber: 'Issue Number',
     title: 'Title',
@@ -296,6 +298,7 @@ const ko = {
   },
   issue: {
     title: '이슈 분석',
+    issueInfo: '이슈 정보',
     historyData: '히스토리 데이터',
     issueNumber: '이슈 번호',
     title: '제목',

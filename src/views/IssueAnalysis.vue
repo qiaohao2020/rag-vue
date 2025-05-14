@@ -2,29 +2,32 @@
   <div class="issue-analysis">
     <div class="header">
       <h2>{{ t('issue.title') }}</h2>
+      <div class="history-button">
+        <el-dropdown @command="handleHistorySelect">
+          <el-button type="primary">
+            <el-icon><Clock /></el-icon>
+            {{ t('issue.historyData') }}
+          </el-button>
+          <template #dropdown>
+            <el-dropdown-menu>
+              <el-dropdown-item 
+                v-for="item in historyData" 
+                :key="item.id"
+                :command="item"
+              >
+                {{ item.title }}
+              </el-dropdown-item>
+            </el-dropdown-menu>
+          </template>
+        </el-dropdown>
+      </div>
     </div>
 
     <div class="content">
       <!-- 左侧输入区域 -->
       <div class="input-section">
-        <div class="history-button">
-          <el-dropdown @command="handleHistorySelect">
-            <el-button type="primary">
-              <el-icon><Clock /></el-icon>
-              {{ t('issue.historyData') }}
-            </el-button>
-            <template #dropdown>
-              <el-dropdown-menu>
-                <el-dropdown-item 
-                  v-for="item in historyData" 
-                  :key="item.id"
-                  :command="item"
-                >
-                  {{ item.title }}
-                </el-dropdown-item>
-              </el-dropdown-menu>
-            </template>
-          </el-dropdown>
+        <div class="section-header">
+          <h3>{{ t('issue.issueInfo') }}</h3>
         </div>
 
         <el-form 
@@ -90,8 +93,10 @@
             </div>
           </template>
 
-          <el-tabs>
-            <el-tab-pane :label="t('issue.translation')">
+          <div class="result-content">
+            <!-- 翻译结果 -->
+            <div class="translation-section">
+              <h3>{{ t('issue.translation') }}</h3>
               <div class="translation-content">
                 <div class="language-section">
                   <h4>{{ t('issue.chinese') }}</h4>
@@ -102,9 +107,11 @@
                   <p>{{ analysisResult.translation.en }}</p>
                 </div>
               </div>
-            </el-tab-pane>
+            </div>
 
-            <el-tab-pane :label="t('issue.relatedInfo')">
+            <!-- 相关信息 -->
+            <div class="related-section">
+              <h3>{{ t('issue.relatedInfo') }}</h3>
               <div class="related-info">
                 <el-timeline>
                   <el-timeline-item
@@ -120,8 +127,8 @@
                   </el-timeline-item>
                 </el-timeline>
               </div>
-            </el-tab-pane>
-          </el-tabs>
+            </div>
+          </div>
         </el-card>
 
         <el-empty v-else :description="t('issue.noHistoryData')" />
@@ -276,6 +283,11 @@ const handleAnalyze = async () => {
   color: var(--el-text-color-primary);
 }
 
+.history-button {
+  display: flex;
+  align-items: center;
+}
+
 .content {
   display: flex;
   gap: 20px;
@@ -290,8 +302,15 @@ const handleAnalyze = async () => {
   box-shadow: var(--el-box-shadow-light);
 }
 
-.history-button {
+.section-header {
   margin-bottom: 20px;
+}
+
+.section-header h3 {
+  margin: 0;
+  color: var(--el-text-color-primary);
+  font-size: 16px;
+  font-weight: 600;
 }
 
 .issue-form {
@@ -300,7 +319,6 @@ const handleAnalyze = async () => {
 
 .result-section {
   flex: 1;
-  padding: 20px;
   background: var(--el-bg-color);
   border-radius: 4px;
   box-shadow: var(--el-box-shadow-light);
@@ -316,21 +334,46 @@ const handleAnalyze = async () => {
   align-items: center;
 }
 
+.result-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 16px;
+}
+
+.translation-section,
+.related-section {
+  background: var(--el-bg-color-page);
+  border-radius: 4px;
+  padding: 16px;
+}
+
+.translation-section h3,
+.related-section h3 {
+  margin: 0 0 16px 0;
+  color: var(--el-text-color-primary);
+  font-size: 16px;
+  font-weight: 600;
+}
+
 .translation-content {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
 }
 
 .language-section {
-  padding: 10px;
-  background: var(--el-bg-color-page);
+  padding: 12px;
+  background: var(--el-bg-color);
   border-radius: 4px;
+  border: 1px solid var(--el-border-color-light);
 }
 
 .language-section h4 {
-  margin: 0 0 10px 0;
+  margin: 0 0 8px 0;
   color: var(--el-text-color-primary);
+  font-size: 14px;
+  font-weight: 500;
 }
 
 .language-section p {
@@ -340,18 +383,26 @@ const handleAnalyze = async () => {
 }
 
 .related-info {
-  padding: 10px;
+  padding: 8px;
 }
 
 :deep(.el-timeline-item__content) {
   h4 {
-    margin: 0 0 10px 0;
+    margin: 0 0 8px 0;
     color: var(--el-text-color-primary);
+    font-size: 14px;
+    font-weight: 500;
   }
   
   p {
     margin: 0;
     color: var(--el-text-color-regular);
+    line-height: 1.6;
   }
+}
+
+:deep(.el-timeline-item__timestamp) {
+  color: var(--el-text-color-secondary);
+  font-size: 12px;
 }
 </style> 

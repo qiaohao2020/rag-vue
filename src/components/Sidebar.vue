@@ -9,18 +9,8 @@ import {
   Search,
   QuestionFilled,
   Setting,
-  Document,
-  Expand,
-  Fold
+  Document
 } from '@element-plus/icons-vue'
-
-const props = defineProps<{
-  isCollapse: boolean
-}>()
-
-const emit = defineEmits<{
-  (e: 'update:isCollapse', value: boolean): void
-}>()
 
 const route = useRoute()
 const { t, locale } = useI18n()
@@ -69,17 +59,12 @@ const handleLocaleChange = (value: string) => {
   locale.value = value
   localStorage.setItem('language', value)
 }
-
-const toggleCollapse = () => {
-  emit('update:isCollapse', !props.isCollapse)
-}
 </script>
 
 <template>
   <el-menu
     :default-active="route.path"
     class="sidebar-menu"
-    :collapse="isCollapse"
     router
     background-color="#304156"
     text-color="#bfcbd9"
@@ -87,7 +72,7 @@ const toggleCollapse = () => {
   >
     <div class="logo-container">
       <img src="../assets/logo.png" alt="Logo" class="logo" />
-      <span v-show="!isCollapse" class="logo-text">RAG-Vue</span>
+      <span class="logo-text">RAG-Vue</span>
     </div>
 
     <el-menu-item
@@ -104,18 +89,11 @@ const toggleCollapse = () => {
         v-model="currentLocale" 
         @change="handleLocaleChange"
         class="language-select"
-        :class="{ 'is-collapse': isCollapse }"
       >
         <el-option label="中文" value="zh" />
         <el-option label="English" value="en" />
         <el-option label="한국어" value="ko" />
       </el-select>
-
-      <div class="collapse-button" @click="toggleCollapse">
-        <el-icon>
-          <component :is="isCollapse ? 'Expand' : 'Fold'" />
-        </el-icon>
-      </div>
     </div>
   </el-menu>
 </template>
@@ -163,33 +141,6 @@ const toggleCollapse = () => {
 
 .language-select {
   width: 100%;
-}
-
-.language-select.is-collapse {
-  width: 40px;
-}
-
-.collapse-button {
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  color: #bfcbd9;
-}
-
-.collapse-button:hover {
-  background-color: #263445;
-}
-
-:deep(.el-select.is-collapse .el-input__wrapper) {
-  padding: 0;
-  justify-content: center;
-  background-color: transparent;
-}
-
-:deep(.el-select.is-collapse .el-input__inner) {
-  display: none;
 }
 
 :deep(.el-menu-item) {
