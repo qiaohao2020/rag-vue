@@ -4,6 +4,7 @@ import KnowledgeBase from '../views/KnowledgeBase.vue'
 import QAPage from '../views/QAPage.vue'
 import SettingsPage from '../views/SettingsPage.vue'
 import SearchPage from '../views/SearchPage.vue'
+import IssueAnalysis from '../views/IssueAnalysis.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -40,6 +41,11 @@ const router = createRouter({
       path: '/search',
       name: 'search',
       component: SearchPage
+    },
+    {
+      path: '/issue',
+      name: 'issue',
+      component: IssueAnalysis
     }
   ],
 })

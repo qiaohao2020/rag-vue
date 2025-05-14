@@ -22,6 +22,7 @@ const zh = {
     qa: '问答',
     knowledge: '知识库',
     search: '内容检索',
+    issue: '问题分析',
     help: '帮助',
     settings: '设置'
   },
@@ -78,6 +79,31 @@ const zh = {
     cacheSize: '缓存大小',
     milliseconds: '毫秒',
     mb: 'MB'
+  },
+  issue: {
+    title: '问题分析',
+    historyData: '历史数据',
+    issueNumber: '问题编号',
+    title: '标题',
+    description: '描述',
+    system: '系统',
+    category: '分类',
+    analyze: '分析',
+    analysisResult: '分析结果',
+    translation: '翻译',
+    relatedInfo: '关联信息',
+    chinese: '中文',
+    english: '英文',
+    required: '必填项',
+    selectSystem: '请选择系统',
+    selectCategory: '请选择分类',
+    inputIssueNumber: '请输入问题编号',
+    inputTitle: '请输入标题',
+    inputDescription: '请输入描述',
+    noHistoryData: '暂无历史数据',
+    loading: '加载中...',
+    analyzeSuccess: '分析成功',
+    analyzeFailed: '分析失败'
   }
 }
 
@@ -103,6 +129,7 @@ const en = {
     qa: 'QA',
     knowledge: 'Knowledge',
     search: 'Search',
+    issue: 'Issue Analysis',
     help: 'Help',
     settings: 'Settings'
   },
@@ -159,6 +186,31 @@ const en = {
     cacheSize: 'Cache Size',
     milliseconds: 'ms',
     mb: 'MB'
+  },
+  issue: {
+    title: 'Issue Analysis',
+    historyData: 'History Data',
+    issueNumber: 'Issue Number',
+    title: 'Title',
+    description: 'Description',
+    system: 'System',
+    category: 'Category',
+    analyze: 'Analyze',
+    analysisResult: 'Analysis Result',
+    translation: 'Translation',
+    relatedInfo: 'Related Information',
+    chinese: 'Chinese',
+    english: 'English',
+    required: 'Required',
+    selectSystem: 'Please select system',
+    selectCategory: 'Please select category',
+    inputIssueNumber: 'Please input issue number',
+    inputTitle: 'Please input title',
+    inputDescription: 'Please input description',
+    noHistoryData: 'No history data',
+    loading: 'Loading...',
+    analyzeSuccess: 'Analysis successful',
+    analyzeFailed: 'Analysis failed'
   }
 }
 
@@ -184,6 +236,7 @@ const ko = {
     qa: '질문답변',
     knowledge: '지식베이스',
     search: '검색',
+    issue: '이슈 분석',
     help: '도움말',
     settings: '설정'
   },
@@ -240,13 +293,38 @@ const ko = {
     cacheSize: '캐시 크기',
     milliseconds: '밀리초',
     mb: 'MB'
+  },
+  issue: {
+    title: '이슈 분석',
+    historyData: '히스토리 데이터',
+    issueNumber: '이슈 번호',
+    title: '제목',
+    description: '설명',
+    system: '시스템',
+    category: '분류',
+    analyze: '분석',
+    analysisResult: '분석 결과',
+    translation: '번역',
+    relatedInfo: '관련 정보',
+    chinese: '중국어',
+    english: '영어',
+    required: '필수',
+    selectSystem: '시스템을 선택하세요',
+    selectCategory: '분류를 선택하세요',
+    inputIssueNumber: '이슈 번호를 입력하세요',
+    inputTitle: '제목을 입력하세요',
+    inputDescription: '설명을 입력하세요',
+    noHistoryData: '히스토리 데이터 없음',
+    loading: '로딩 중...',
+    analyzeSuccess: '분석 성공',
+    analyzeFailed: '분석 실패'
   }
 }
 
 const i18n = createI18n({
   legacy: false,
-  locale: localStorage.getItem('language') || 'zh',
-  fallbackLocale: 'zh',
+  locale: localStorage.getItem('language') || 'en',
+  fallbackLocale: 'en',
   messages: {
     zh,
     en,
