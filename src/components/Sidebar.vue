@@ -9,22 +9,20 @@ import {
   Search,
   QuestionFilled,
   Setting,
-  Document
+  Document,
+  Fold,
+  Expand
 } from '@element-plus/icons-vue'
 
 const route = useRoute()
 const { t, locale } = useI18n()
+const isCollapse = ref(false)
 
 const menuItems = computed(() => [
   {
     path: '/',
     icon: House,
     title: t('menu.home')
-  },
-  {
-    path: '/qa',
-    icon: ChatDotRound,
-    title: t('menu.qa')
   },
   {
     path: '/knowledge',
@@ -40,6 +38,11 @@ const menuItems = computed(() => [
     path: '/issue',
     icon: Document,
     title: t('menu.issue')
+  },
+  {
+    path: '/qa',
+    icon: ChatDotRound,
+    title: t('menu.qa')
   },
   {
     path: '/help',
@@ -65,6 +68,7 @@ const handleLocaleChange = (value: string) => {
   <el-menu
     :default-active="route.path"
     class="sidebar-menu"
+    :collapse="isCollapse"
     router
     background-color="#304156"
     text-color="#bfcbd9"
@@ -72,7 +76,7 @@ const handleLocaleChange = (value: string) => {
   >
     <div class="logo-container">
       <img src="../assets/logo.png" alt="Logo" class="logo" />
-      <span class="logo-text">RAG-Vue</span>
+      <span class="logo-text" v-show="!isCollapse">RAG-Vue</span>
     </div>
 
     <el-menu-item
@@ -85,10 +89,20 @@ const handleLocaleChange = (value: string) => {
     </el-menu-item>
 
     <div class="sidebar-footer">
+      <el-button
+        type="text"
+        class="collapse-btn"
+        @click="isCollapse = !isCollapse"
+      >
+        <el-icon>
+          <component :is="isCollapse ? Expand : Fold" />
+        </el-icon>
+      </el-button>
       <el-select 
         v-model="currentLocale" 
         @change="handleLocaleChange"
         class="language-select"
+        :popper-class="isCollapse ? 'language-select-dropdown-collapsed' : ''"
       >
         <el-option label="中文" value="zh" />
         <el-option label="English" value="en" />
@@ -103,6 +117,7 @@ const handleLocaleChange = (value: string) => {
   height: 100vh;
   border-right: none;
   background-color: #304156 !important;
+  transition: width 0.3s;
 }
 
 .logo-container {
@@ -112,11 +127,13 @@ const handleLocaleChange = (value: string) => {
   padding: 0 20px;
   margin-bottom: 20px;
   background-color: #2b3649;
+  overflow: hidden;
 }
 
 .logo {
   width: 32px;
   height: 32px;
+  flex-shrink: 0;
 }
 
 .logo-text {
@@ -124,6 +141,7 @@ const handleLocaleChange = (value: string) => {
   font-size: 18px;
   font-weight: bold;
   color: #bfcbd9;
+  white-space: nowrap;
 }
 
 .sidebar-footer {
@@ -137,6 +155,20 @@ const handleLocaleChange = (value: string) => {
   gap: 10px;
   background: #2b3649;
   border-top: 1px solid #1f2d3d;
+}
+
+.collapse-btn {
+  color: #bfcbd9;
+  padding: 8px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.collapse-btn:hover {
+  color: #409EFF;
+  background-color: #263445;
 }
 
 .language-select {
@@ -168,5 +200,13 @@ const handleLocaleChange = (value: string) => {
   &.selected {
     color: #409EFF;
   }
+}
+
+:deep(.el-menu--collapse) {
+  width: 64px;
+}
+
+:deep(.el-menu:not(.el-menu--collapse)) {
+  width: 200px;
 }
 </style> 
