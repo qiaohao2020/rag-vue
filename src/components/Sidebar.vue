@@ -7,7 +7,6 @@ import {
   ChatDotRound,
   Collection,
   Search,
-  QuestionFilled,
   Setting,
   Document,
   Fold,
@@ -43,11 +42,6 @@ const menuItems = computed(() => [
     path: '/qa',
     icon: ChatDotRound,
     title: t('menu.qa')
-  },
-  {
-    path: '/help',
-    icon: QuestionFilled,
-    title: t('menu.help')
   },
   {
     path: '/settings',
